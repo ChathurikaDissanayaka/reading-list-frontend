@@ -1,9 +1,11 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-import BackButton from "../components/BackButton";
 import Spinner from "../components/Spinner";
 import { useSnackbar } from "notistack";
+import { Box, Flex, Text } from "@chakra-ui/react";
+import { Button } from "../components/ui/button";
+import Navbar from "../components/Navbar";
 
 const DeleteBook = () => {
   const [loading, setLoading] = useState(false);
@@ -31,19 +33,34 @@ const DeleteBook = () => {
   };
 
   return (
-    <div className="p-4">
-      <BackButton />
+    <Box p={"4"}>
+      <Navbar />
       {loading ? <Spinner /> : ""}
-      <div className="flex flex-col items-center border-2 border-sky-400 rounded-xl w-full sm:w-[90%] md:w-[400px] lg:w-[600px] p-8 mx-auto my-16">
-        <h3 className="text-2xl">Do you really want to delete this book?</h3>
-        <button
-          className="p-4 bg-red-500 hover:bg-red-400 text-white m-8 w-full rounded-lg"
-          onClick={handleDeleteBook}
+
+      <Flex flexDir={"column"} alignItems={"center"}>
+        <Box
+          w={"xl"}
+          p={16}
+          borderWidth="1px"
+          borderColor="border.disabled"
+          color="fg.disabled"
+          borderRadius="md"
         >
-          Yes, delete it
-        </button>
-      </div>
-    </div>
+          <Flex
+            flexDir={"column"}
+            alignItems={"center"}
+            justifyItems={"center"}
+          >
+            <Text fontSize={"25px"} marginBottom={5}>
+              Do you really want to delete this book?
+            </Text>
+            <Button colorPalette={"red"} w={"full"} onClick={handleDeleteBook}>
+              Yes, delete it
+            </Button>
+          </Flex>
+        </Box>
+      </Flex>
+    </Box>
   );
 };
 

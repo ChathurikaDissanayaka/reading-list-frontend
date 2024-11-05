@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-import BackButton from "../components/BackButton";
 import Spinner from "../components/Spinner";
 import { useSnackbar } from "notistack";
+import Navbar from "../components/Navbar";
+import { Box } from "@chakra-ui/react";
 
 const EditBook = () => {
   const [title, setTitle] = useState("");
@@ -65,8 +66,8 @@ const EditBook = () => {
   };
 
   return (
-    <div className="p-4">
-      <BackButton />
+    <Box p={"4"}>
+      <Navbar/>
       {loading ? <Spinner /> : ""}
       <div className="flex flex-col border-sky-400 rounded-xl w-full sm:w-[90%] md:w-[400px] lg:w-[600px] p-4 mx-auto">
         <div className="my-4">
@@ -105,7 +106,7 @@ const EditBook = () => {
           Save Details
         </button>
       </div>
-    </div>
+    </Box>
   );
 };
 

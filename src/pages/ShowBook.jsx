@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import BackButton from "../components/BackButton";
 import Spinner from "../components/Spinner";
+import Navbar from "../components/Navbar";
+import { Box } from "@chakra-ui/react";
 
 const ShowBook = () => {
   const [book, setBook] = useState({});
@@ -24,8 +25,8 @@ const ShowBook = () => {
   }, [backendUrl, id]);
 
   return (
-    <div className="p-4">
-      <BackButton />
+    <Box p={"4"}>
+      <Navbar/>
       {loading ? (
         <Spinner />
       ) : (
@@ -78,7 +79,7 @@ const ShowBook = () => {
           </div>
         </div>
       )}
-    </div>
+    </Box>
   );
 };
 

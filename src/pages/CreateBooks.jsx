@@ -1,11 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import BackButton from "../components/BackButton";
 import Spinner from "../components/Spinner";
 import { useSnackbar } from "notistack";
-import { Box, Flex } from "@chakra-ui/react";
-import { ColorModeButton } from "../components/ui/color-mode";
+import { Box } from "@chakra-ui/react";
+import Navbar from "../components/Navbar";
 
 const CreateBooks = () => {
   const [title, setTitle] = useState("");
@@ -52,15 +51,7 @@ const CreateBooks = () => {
 
   return (
     <Box p={"4"}>
-      <Flex
-        h={16}
-        alignItems={"center"}
-        justifyContent={"space-between"}
-        flexDir={"row"}
-      >
-        <BackButton />
-        <ColorModeButton variant="outline" />
-      </Flex>
+      <Navbar />
 
       {loading ? <Spinner /> : ""}
       <div className="flex flex-col border-sky-400 rounded-xl w-full sm:w-[90%] md:w-[400px] lg:w-[600px] p-4 mx-auto">

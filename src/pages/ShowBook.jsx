@@ -2,8 +2,11 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import { Box } from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
 import LoadingSpinner from "../components/LoadingSpinner";
+//
+import { Badge, Card, HStack, Image } from "@chakra-ui/react";
+//
 
 const ShowBook = () => {
   const [book, setBook] = useState({});
@@ -26,58 +29,30 @@ const ShowBook = () => {
 
   return (
     <Box p={"4"}>
-      <Navbar/>
+      <Navbar />
       {loading ? (
         <LoadingSpinner />
       ) : (
-        <div className="flex flex-col border-2 border-sky-400 rounded-xl w-full sm:w-[90%] md:w-[600px] lg:w-[800px] p-4 sm:p-6 md:p-8 mx-auto my-8 md:my-16">
-          <div className="my-2 md:my-4">
-            <span className="text-lg md:text-xl mr-2 md:mr-4 text-gray-800">
-              Id:
-            </span>
-            <span className="text-lg md:text-xl text-gray-800">{book._id}</span>
-          </div>
-          <div className="my-2 md:my-4">
-            <span className="text-lg md:text-xl mr-2 md:mr-4 text-gray-800">
-              Title:
-            </span>
-            <span className="text-lg md:text-xl text-gray-800">
-              {book.title}
-            </span>
-          </div>
-          <div className="my-2 md:my-4">
-            <span className="text-lg md:text-xl mr-2 md:mr-4 text-gray-800">
-              Author:
-            </span>
-            <span className="text-lg md:text-xl text-gray-800">
-              {book.author}
-            </span>
-          </div>
-          <div className="my-2 md:my-4">
-            <span className="text-lg md:text-xl mr-2 md:mr-4 text-gray-800">
-              Published Year:
-            </span>
-            <span className="text-lg md:text-xl text-gray-800">
-              {book.publishedYear}
-            </span>
-          </div>
-          <div className="my-2 md:my-4">
-            <span className="text-lg md:text-xl mr-2 md:mr-4 text-gray-800">
-              Created Time:
-            </span>
-            <span className="text-lg md:text-xl text-gray-800">
-              {new Date(book.createdAt).toString()}
-            </span>
-          </div>
-          <div className="my-2 md:my-4">
-            <span className="text-lg md:text-xl mr-2 md:mr-4 text-gray-800">
-              Last Updated Time:
-            </span>
-            <span className="text-lg md:text-xl text-gray-800">
-              {new Date(book.updatedAt).toString()}
-            </span>
-          </div>
-        </div>
+        <Flex flexDir={"column"} alignItems={"center"} >
+          <Card.Root maxW="md" overflow="hidden">
+            <Image src={book.coverImage} alt={book.title} />
+            <Card.Body gap="2">
+              <Card.Title>{book.title}</Card.Title>
+              <Card.Description>
+                <Text>Author: {book.author}</Text>
+                <Text mt={"2"}>ISBN: {book.isbn}</Text>
+                <Text mt={"2"}>Created Time: {new Date(book.createdAt).toLocaleString()}</Text>
+                <Text mt={"2"}>
+                  Last Updated Time: {new Date(book.updatedAt).toLocaleString()}
+                </Text>
+              </Card.Description>
+              <HStack mt="2">
+                <Badge>{book.status}</Badge>
+                <Badge>{book.pageCount} pages</Badge>
+              </HStack>
+            </Card.Body>
+          </Card.Root>
+        </Flex>
       )}
     </Box>
   );

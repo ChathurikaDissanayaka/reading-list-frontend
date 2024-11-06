@@ -47,8 +47,8 @@ const ShowBook = () => {
                 </Text>
               </Card.Description>
               <HStack mt="2">
-                <Badge>{book.status}</Badge>
-                <Badge>{book.pageCount} pages</Badge>
+                {book.status === "completed" ? <Badge colorPalette={"green"}>{book.status}</Badge> : <Badge colorPalette={"blue"}>{book.status}</Badge>}
+                <Badge variant="outline">{book.pageCount} pages</Badge>
               </HStack>
             </Card.Body>
           </Card.Root>

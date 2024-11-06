@@ -39,7 +39,7 @@ const DeleteBook = () => {
 
       <Flex flexDir={"column"} alignItems={"center"}>
         <Box
-          w={"xl"}
+          maxW={"xl"}
           p={16}
           borderWidth="1px"
           borderColor="border.disabled"

@@ -40,9 +40,7 @@ const Home = () => {
         flexDir={"row"}
       >
         <Text
-          bgGradient={"to-r"}
-          gradientFrom={"#7928CA"}
-          gradientTo={"#FF0080"}
+          bgColor={"blue"}
           bgClip={"text"}
           textTransform={"uppercase"}
           textAlign={"center"}

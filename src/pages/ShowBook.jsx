@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import { Box, Flex, Text, Badge, Card, HStack, Image } from "@chakra-ui/react";
+import { Box, Flex, Badge, Card, HStack, Image } from "@chakra-ui/react";
 import LoadingSpinner from "../components/LoadingSpinner";
 
 const ShowBook = () => {
@@ -33,28 +33,42 @@ const ShowBook = () => {
         <Flex flexDir={"column"} alignItems={"center"}>
           <Card.Root maxW="xl" overflow="hidden">
             <Card.Body gap="2">
-              <Flex flexDir={{ base: "column",  md: "row" }} alignItems={"center"}>
-                <Image h={"sm"} src={book.coverImage} alt={book.title} rounded={"md"} />
-                <Box ml={{base:0, md:5}}>
+              <Flex
+                flexDir={{ base: "column", md: "row" }}
+                alignItems={"center"}
+              >
+                <Image
+                  h={"sm"}
+                  src={book.coverImage}
+                  alt={book.title}
+                  rounded={"md"}
+                />
+                <Box ml={{ base: 0, md: 5 }}>
                   <Card.Title>{book.title}</Card.Title>
-                  <Card.Description>
-                    <Text mt={"3"}>Author: {book.author}</Text>
-                    <Text mt={"3"}>ISBN: {book.isbn}</Text>
-                    <Text mt={"3"}>
-                      Created Time: {new Date(book.createdAt).toLocaleString()}
-                    </Text>
-                    <Text mt={"3"}>
-                      Last Updated Time:{" "}
-                      {new Date(book.updatedAt).toLocaleString()}
-                    </Text>
+                  <Card.Description mt="3">
+                    Author: {book.author}
+                  </Card.Description>
+                  <Card.Description mt="3">ISBN: {book.isbn}</Card.Description>
+                  <Card.Description mt="3">
+                    Created Time: {new Date(book.createdAt).toLocaleString()}
+                  </Card.Description>
+                  <Card.Description mt="3">
+                    Last Updated Time:
+                    {new Date(book.updatedAt).toLocaleString()}
                   </Card.Description>
                   <HStack mt="3">
                     {book.status === "completed" ? (
-                      <Badge colorPalette={"green"}>{book.status}</Badge>
+                      <Badge colorPalette={"green"} variant="subtle">
+                        {book.status}
+                      </Badge>
                     ) : (
-                      <Badge colorPalette={"blue"}>{book.status}</Badge>
+                      <Badge colorPalette={"yellow"} variant="subtle">
+                        {book.status}
+                      </Badge>
                     )}
-                    <Badge variant="outline">{book.pageCount} pages</Badge>
+                    <Badge colorPalette={"purple"} variant="subtle">
+                      {book.pageCount} pages
+                    </Badge>
                   </HStack>
                 </Box>
               </Flex>

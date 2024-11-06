@@ -31,28 +31,33 @@ const ShowBook = () => {
         <LoadingSpinner />
       ) : (
         <Flex flexDir={"column"} alignItems={"center"}>
-          <Card.Root maxW="md" overflow="hidden">
-            <Image src={book.coverImage} alt={book.title} />
+          <Card.Root maxW="xl" overflow="hidden">
             <Card.Body gap="2">
-              <Card.Title>{book.title}</Card.Title>
-              <Card.Description>
-                <Text>Author: {book.author}</Text>
-                <Text mt={"2"}>ISBN: {book.isbn}</Text>
-                <Text mt={"2"}>
-                  Created Time: {new Date(book.createdAt).toLocaleString()}
-                </Text>
-                <Text mt={"2"}>
-                  Last Updated Time: {new Date(book.updatedAt).toLocaleString()}
-                </Text>
-              </Card.Description>
-              <HStack mt="2">
-                {book.status === "completed" ? (
-                  <Badge colorPalette={"green"}>{book.status}</Badge>
-                ) : (
-                  <Badge colorPalette={"blue"}>{book.status}</Badge>
-                )}
-                <Badge variant="outline">{book.pageCount} pages</Badge>
-              </HStack>
+              <Flex flexDir={{ base: "column",  md: "row" }} alignItems={"center"}>
+                <Image h={"sm"} src={book.coverImage} alt={book.title} rounded={"md"} />
+                <Box ml={{base:0, md:5}}>
+                  <Card.Title>{book.title}</Card.Title>
+                  <Card.Description>
+                    <Text mt={"3"}>Author: {book.author}</Text>
+                    <Text mt={"3"}>ISBN: {book.isbn}</Text>
+                    <Text mt={"3"}>
+                      Created Time: {new Date(book.createdAt).toLocaleString()}
+                    </Text>
+                    <Text mt={"3"}>
+                      Last Updated Time:{" "}
+                      {new Date(book.updatedAt).toLocaleString()}
+                    </Text>
+                  </Card.Description>
+                  <HStack mt="3">
+                    {book.status === "completed" ? (
+                      <Badge colorPalette={"green"}>{book.status}</Badge>
+                    ) : (
+                      <Badge colorPalette={"blue"}>{book.status}</Badge>
+                    )}
+                    <Badge variant="outline">{book.pageCount} pages</Badge>
+                  </HStack>
+                </Box>
+              </Flex>
             </Card.Body>
           </Card.Root>
         </Flex>

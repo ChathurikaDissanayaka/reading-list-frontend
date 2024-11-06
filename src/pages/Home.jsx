@@ -40,7 +40,7 @@ const Home = () => {
         flexDir={"row"}
       >
         <Text
-          bgColor={"blue"}
+          bgColor={"blue.600"}
           bgClip={"text"}
           textTransform={"uppercase"}
           textAlign={"center"}

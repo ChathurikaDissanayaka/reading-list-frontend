@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Spinner from "../components/Spinner";
+import LoadingSpinner from "../components/LoadingSpinner";
 import { useSnackbar } from "notistack";
 import { Box } from "@chakra-ui/react";
 import Navbar from "../components/Navbar";
@@ -53,7 +53,7 @@ const CreateBooks = () => {
     <Box p={"4"}>
       <Navbar />
 
-      {loading ? <Spinner /> : ""}
+      {loading ? <LoadingSpinner /> : ""}
       <div className="flex flex-col border-sky-400 rounded-xl w-full sm:w-[90%] md:w-[400px] lg:w-[600px] p-4 mx-auto">
         <div className="my-2">
           <label className="text-xl mr-4 text-gray-800">Title:</label>

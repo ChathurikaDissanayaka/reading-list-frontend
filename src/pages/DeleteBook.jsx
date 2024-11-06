@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-import Spinner from "../components/Spinner";
+import LoadingSpinner from "../components/LoadingSpinner";
 import { useSnackbar } from "notistack";
 import { Box, Flex, Text } from "@chakra-ui/react";
 import { Button } from "../components/ui/button";
@@ -35,7 +35,7 @@ const DeleteBook = () => {
   return (
     <Box p={"4"}>
       <Navbar />
-      {loading ? <Spinner /> : ""}
+      {loading ? <LoadingSpinner /> : ""}
 
       <Flex flexDir={"column"} alignItems={"center"}>
         <Box

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import Spinner from "../components/Spinner";
 import Navbar from "../components/Navbar";
 import { Box } from "@chakra-ui/react";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const ShowBook = () => {
   const [book, setBook] = useState({});
@@ -28,7 +28,7 @@ const ShowBook = () => {
     <Box p={"4"}>
       <Navbar/>
       {loading ? (
-        <Spinner />
+        <LoadingSpinner />
       ) : (
         <div className="flex flex-col border-2 border-sky-400 rounded-xl w-full sm:w-[90%] md:w-[600px] lg:w-[800px] p-4 sm:p-6 md:p-8 mx-auto my-8 md:my-16">
           <div className="my-2 md:my-4">

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Spinner from "../components/Spinner";
+import LoadingSpinner from "../components/LoadingSpinner";
 import { Link } from "react-router-dom";
 import BookCard from "../components/home/BookCard";
 import BookTable from "../components/home/BookTable";
@@ -82,7 +82,7 @@ const Home = () => {
       </Flex>
 
       {loading ? (
-        <Spinner />
+        <LoadingSpinner />
       ) : showType === "table" ? (
         <BookTable books={books} />
       ) : (

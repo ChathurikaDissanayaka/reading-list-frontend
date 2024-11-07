@@ -53,7 +53,7 @@ const ShowBook = () => {
                     Created Time: {new Date(book.createdAt).toLocaleString()}
                   </Card.Description>
                   <Card.Description mt="3">
-                    Last Updated Time:
+                    Updated Time:
                     {new Date(book.updatedAt).toLocaleString()}
                   </Card.Description>
                   <HStack mt="3">

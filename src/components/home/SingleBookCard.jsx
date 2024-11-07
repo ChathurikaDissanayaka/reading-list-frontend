@@ -1,9 +1,8 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import { AiOutlineEdit } from "react-icons/ai";
-import { BsInfoCircle } from "react-icons/bs";
 import { MdOutlineDelete } from "react-icons/md";
-import { Button } from "@chakra-ui/react";
+import { IoInformationCircleOutline } from "react-icons/io5";
 import { Badge, Box, Card, HStack, Image, Flex } from "@chakra-ui/react";
 import { GridItem } from "@chakra-ui/react";
 
@@ -41,21 +40,15 @@ const SingleBookCard = ({ book }) => {
                 </Card.Description>
                 <Card.Description mt="3">ISBN: {book.isbn}</Card.Description>
 
-                <HStack mt="5">
+                <HStack mt={5} display={"flex"} justifyContent={"space-around"}>
                   <Link to={`/books/details/${book._id}`}>
-                    <Button size="sm" variant="surface">
-                      <BsInfoCircle />
-                    </Button>
+                    <IoInformationCircleOutline color="#4A8A31" />
                   </Link>
                   <Link to={`/books/edit/${book._id}`}>
-                    <Button size="sm" variant="surface">
-                      <AiOutlineEdit />
-                    </Button>
+                    <AiOutlineEdit color="#CEB038" />
                   </Link>
                   <Link to={`/books/delete/${book._id}`}>
-                    <Button size="sm" variant="surface">
-                      <MdOutlineDelete />
-                    </Button>
+                    <MdOutlineDelete color="#A71819" />
                   </Link>
                 </HStack>
               </Box>

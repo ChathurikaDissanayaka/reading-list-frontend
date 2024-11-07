@@ -11,10 +11,10 @@ const SingleBookCard = ({ book }) => {
     <GridItem key={book._id}>
       <Flex flexDir={"column"} alignItems={"center"}>
         <Card.Root maxW="xl" overflow="hidden">
-          <Card.Body gap="2">
+          <Card.Body p={5} >
             <Flex flexDir={{ base: "column", md: "row" }} alignItems={"center"}>
               <Image
-                h={"150px"}
+                h={"170px"}
                 src={book.coverImage}
                 alt={book.title}
                 rounded={"md"}

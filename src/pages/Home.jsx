@@ -10,6 +10,7 @@ import { Button } from "../components/ui/button";
 
 const Home = () => {
   const [books, setBooks] = useState([]);
+  const [bookCount, setBookCount] = useState([]);
   const [loading, setLoading] = useState(false);
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
@@ -19,6 +20,7 @@ const Home = () => {
       .get(`${backendUrl}/books`)
       .then((res) => {
         setBooks(res.data.data);
+        setBookCount(res.data.count);
         setLoading(false);
       })
       .catch((err) => {
@@ -58,7 +60,7 @@ const Home = () => {
       </Flex>
 
       {loading ? <LoadingSpinner /> : ""}
-      <BookCard books={books} />
+      <BookCard books={books} bookCount={bookCount} />
     </Box>
   );
 };

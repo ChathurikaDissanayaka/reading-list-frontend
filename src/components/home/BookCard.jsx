@@ -1,20 +1,36 @@
 /* eslint-disable react/prop-types */
 import SingleBookCard from "./SingleBookCard";
+import NoBooksFound from "../NoBooksFound";
 import { Grid, Container, Text } from "@chakra-ui/react";
 
-const BookCard = ({ books }) => {
+const BookCard = ({ books, bookCount }) => {
+  let readingCount = 0;
+  let completedCount = 0;
+  books.forEach((book) => {
+    if (book.status == "Reading") {
+      readingCount++;
+    } else {
+      completedCount++;
+    }
+  });
   return (
     <Container maxW={{ md: "3xl", lg: "5xl" }}>
-      <Text
-        fontSize={{
-          base: "16px",
-          sm: "25px",
-        }}
-        fontWeight={"bold"}
-        mb={3}
-      >
-        Reading
-      </Text>
+      {bookCount == 0 ? <NoBooksFound /> : ""}
+      {readingCount == 0 ? (
+        ""
+      ) : (
+        <Text
+          fontSize={{
+            base: "16px",
+            sm: "25px",
+          }}
+          fontWeight={"bold"}
+          mb={3}
+        >
+          Reading
+        </Text>
+      )}
+
       <Grid
         gridTemplateColumns={{
           lg: "repeat(3, minmax(0, 1fr))",
@@ -33,17 +49,21 @@ const BookCard = ({ books }) => {
           )
         )}
       </Grid>
-      <Text
-        fontSize={{
-          base: "16px",
-          sm: "25px",
-        }}
-        fontWeight={"bold"}
-        mb={3}
-        mt={8}
-      >
-        Completed
-      </Text>
+      {completedCount == 0 ? (
+        ""
+      ) : (
+        <Text
+          fontSize={{
+            base: "16px",
+            sm: "25px",
+          }}
+          fontWeight={"bold"}
+          mb={3}
+          mt={8}
+        >
+          Completed
+        </Text>
+      )}
       <Grid
         gridTemplateColumns={{
           lg: "repeat(3, minmax(0, 1fr))",

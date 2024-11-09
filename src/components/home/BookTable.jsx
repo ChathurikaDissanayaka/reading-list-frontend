@@ -8,7 +8,6 @@ import { HStack, Table} from "@chakra-ui/react";
 
 const BookTable = ({ books }) => {
   return (
-    
     <Table.Root maxW={"800px"} variant={"outline"} showColumnBorder="true">
       <Table.Header h={{ md: "32px", lg: "50px" }}>
         <Table.Row>

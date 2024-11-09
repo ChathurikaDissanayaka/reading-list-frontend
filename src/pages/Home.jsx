@@ -42,7 +42,6 @@ const Home = () => {
         <Text
           bgColor={"blue.600"}
           bgClip={"text"}
-          textTransform={"uppercase"}
           textAlign={"center"}
           fontSize={{
             base: "32px",

@@ -4,12 +4,20 @@ import { useNavigate, useParams } from "react-router-dom";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { useSnackbar } from "notistack";
 import Navbar from "../components/Navbar";
-import { Box } from "@chakra-ui/react";
+import { Box, Fieldset, Flex, Input } from "@chakra-ui/react";
+import { Button } from "../components/ui/button";
+import { Field } from "../components/ui/field";
+import {
+  NativeSelectField,
+  NativeSelectRoot,
+} from "../components/ui/native-select";
 
 const EditBook = () => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
-  const [publishedYear, setPublishedYear] = useState("");
+  const [isbn, setIsbn] = useState("");
+  const [pageCount, setPageCount] = useState("");
+  const [status, setStatus] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { id } = useParams();
@@ -23,7 +31,9 @@ const EditBook = () => {
       .then((res) => {
         setTitle(res.data.title);
         setAuthor(res.data.author);
-        setPublishedYear(res.data.publishedYear);
+        setIsbn(res.data.isbn);
+        setPageCount(res.data.pageCount);
+        setStatus(res.data.status);
         setLoading(false);
       })
       .catch((err) => {
@@ -33,12 +43,19 @@ const EditBook = () => {
   }, [backendUrl, id]);
 
   const handleEditBook = () => {
-    const currentYear = new Date().getFullYear();
-    if (!title || !author || !publishedYear) {
+    if (!title || !author || !isbn || !pageCount || !status) {
       enqueueSnackbar("All fields are required.", { variant: "warning" });
       return;
-    } else if (publishedYear < 0 || publishedYear > currentYear) {
-      enqueueSnackbar("Please enter a valid published year.", {
+    } else if (
+      isbn <= 0 ||
+      (isbn.toString().length !== 10 && isbn.toString().length !== 13)
+    ) {
+      enqueueSnackbar("Please enter a valid ISBN", {
+        variant: "warning",
+      });
+      return;
+    } else if (pageCount < 0) {
+      enqueueSnackbar("Please enter a number of pages greater than 0.", {
         variant: "warning",
       });
       return;
@@ -46,7 +63,9 @@ const EditBook = () => {
     const data = {
       title,
       author,
-      publishedYear,
+      isbn,
+      pageCount,
+      status,
     };
     setLoading(true);
     axios
@@ -67,45 +86,68 @@ const EditBook = () => {
 
   return (
     <Box p={"4"}>
-      <Navbar/>
+      <Navbar />
       {loading ? <LoadingSpinner /> : ""}
-      <div className="flex flex-col border-sky-400 rounded-xl w-full sm:w-[90%] md:w-[400px] lg:w-[600px] p-4 mx-auto">
-        <div className="my-4">
-          <label className="text-xl mr-4 text-gray-800">Title:</label>
-          <input
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            className="border-2 border-sky-400 px-4 py-2 w-full text-gray-700 rounded-lg my-2"
-          />
-        </div>
-        <div className="my-2">
-          <label className="text-xl mr-4 text-gray-800">Author:</label>
-          <input
-            type="text"
-            value={author}
-            onChange={(e) => setAuthor(e.target.value)}
-            className="border-2 border-sky-400 px-4 py-2 w-full text-gray-700 rounded-lg my-2"
-          />
-        </div>
-        <div className="my-2">
-          <label className="text-xl mr-4 text-gray-800">Published Year:</label>
-          <input
-            type="number"
-            value={publishedYear}
-            min={0}
-            max={new Date().getFullYear()}
-            onChange={(e) => setPublishedYear(e.target.value)}
-            className="border-2 border-sky-400 px-4 py-2 w-full text-gray-700 rounded-lg my-2"
-          />
-        </div>
-        <button
-          className="border-2 border-sky-400 hover:border-sky-300 py-2 w-full bg-sky-400 hover:bg-sky-300 my-4 rounded-lg text-white"
-          onClick={handleEditBook}
-        >
-          Save Details
-        </button>
-      </div>
+      <Flex alignItems={"center"} flexDir={"column"}>
+        <Fieldset.Root w={{ lg: "lg", base: "250px", sm: "sm", md: "sm" }}>
+          <Fieldset.Content>
+            <Field label="Title" required mb={1}>
+              <Input
+                colorPalette={"blue"}
+                value={title}
+                placeholder="To Kill a Mockingbird"
+                onChange={(e) => setTitle(e.target.value)}
+                mb={4}
+              />
+            </Field>
+            <Field label="Author" required mb={1}>
+              <Input
+                colorPalette={"blue"}
+                value={author}
+                placeholder="Harper Lee"
+                onChange={(e) => setAuthor(e.target.value)}
+                mb={4}
+              />
+            </Field>
+            <Field label="ISBN" required mb={1}>
+              <Input
+                colorPalette={"blue"}
+                type="number"
+                value={isbn}
+                placeholder="9780060935467"
+                onChange={(e) => setIsbn(e.target.value)}
+                mb={4}
+              />
+            </Field>
+            <Field label="Number of pages" required mb={1}>
+              <Input
+                colorPalette={"blue"}
+                type="number"
+                value={pageCount}
+                placeholder="323"
+                onChange={(e) => setPageCount(e.target.value)}
+                mb={4}
+              />
+            </Field>
+
+            <Field label="Status">
+              <NativeSelectRoot>
+                <NativeSelectField
+                  colorPalette={"blue"}
+                  items={["reading", "completed"]}
+                  placeholder="Select status..."
+                  value={status}
+                  onChange={(e) => setStatus(e.target.value)}
+                  mb={4}
+                />
+              </NativeSelectRoot>
+            </Field>
+            <Button width={"100%"} colorPalette="blue" onClick={handleEditBook}>
+              Save Details
+            </Button>
+          </Fieldset.Content>
+        </Fieldset.Root>
+      </Flex>
     </Box>
   );
 };

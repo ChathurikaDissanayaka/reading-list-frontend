@@ -135,7 +135,6 @@ const EditBook = () => {
                 <NativeSelectField
                   colorPalette={"blue"}
                   items={["reading", "completed"]}
-                  placeholder="Select status..."
                   value={status}
                   onChange={(e) => setStatus(e.target.value)}
                   mb={4}

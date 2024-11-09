@@ -23,7 +23,7 @@ const DeleteBook = () => {
         enqueueSnackbar("Book has been deleted.", {
           variant: "success",
         });
-        navigate("/");
+        navigate("/books/operations");
       })
       .catch((err) => {
         setLoading(false);
@@ -34,7 +34,7 @@ const DeleteBook = () => {
 
   return (
     <Box p={"4"}>
-      <Navbar />
+      <Navbar destination="/books/operations" />
       {loading ? <LoadingSpinner /> : ""}
 
       <Flex flexDir={"column"} alignItems={"center"}>

@@ -75,7 +75,7 @@ const EditBook = () => {
         enqueueSnackbar("Book has been edited successfully.", {
           variant: "success",
         });
-        navigate("/");
+        navigate("/books/operations");
       })
       .catch((err) => {
         setLoading(false);
@@ -86,7 +86,7 @@ const EditBook = () => {
 
   return (
     <Box p={"4"}>
-      <Navbar />
+      <Navbar destination="/books/operations" />
       {loading ? <LoadingSpinner /> : ""}
       <Flex alignItems={"center"} flexDir={"column"}>
         <Fieldset.Root w={{ lg: "lg", base: "250px", sm: "sm", md: "sm" }}>
@@ -134,7 +134,7 @@ const EditBook = () => {
               <NativeSelectRoot>
                 <NativeSelectField
                   colorPalette={"blue"}
-                  items={["reading", "completed"]}
+                  items={["Reading", "Completed"]}
                   value={status}
                   onChange={(e) => setStatus(e.target.value)}
                   mb={4}

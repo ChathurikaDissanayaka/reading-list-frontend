@@ -7,7 +7,7 @@ const BookCard = ({ books }) => {
     <Container maxW={{ md: "3xl", lg: "5xl" }}>
       <Text
         fontSize={{
-          base: "28px",
+          base: "16px",
           sm: "25px",
         }}
         fontWeight={"bold"}
@@ -26,7 +26,7 @@ const BookCard = ({ books }) => {
         maxW={"6xl"}
       >
         {books.map((book) =>
-          book.status === "reading" ? (
+          book.status === "Reading" ? (
             <SingleBookCard key={book._id} book={book} />
           ) : (
             ""
@@ -35,7 +35,7 @@ const BookCard = ({ books }) => {
       </Grid>
       <Text
         fontSize={{
-          base: "28px",
+          base: "16px",
           sm: "25px",
         }}
         fontWeight={"bold"}
@@ -55,7 +55,7 @@ const BookCard = ({ books }) => {
         maxW={"6xl"}
       >
         {books.map((book) =>
-          book.status === "completed" ? (
+          book.status === "Completed" ? (
             <SingleBookCard key={book._id} book={book} />
           ) : (
             ""

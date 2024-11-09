@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 import BackButton from "./BackButton";
 import { Flex } from "@chakra-ui/react";
 import { ColorModeButton } from "../components/ui/color-mode";
-const Navbar = () => {
+const Navbar = ({ destination = "/" }) => {
   return (
     <Flex
       h={16}
@@ -9,7 +10,7 @@ const Navbar = () => {
       justifyContent={"space-between"}
       flexDir={"row"}
     >
-      <BackButton />
+      <BackButton destination={destination} />
       <ColorModeButton variant="outline" />
     </Flex>
   );

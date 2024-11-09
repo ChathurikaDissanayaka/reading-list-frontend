@@ -57,7 +57,7 @@ const ShowBook = () => {
                     {new Date(book.updatedAt).toLocaleString()}
                   </Card.Description>
                   <HStack mt="3">
-                    {book.status === "completed" ? (
+                    {book.status === "Completed" ? (
                       <Badge colorPalette={"green"} variant="subtle">
                         {book.status}
                       </Badge>

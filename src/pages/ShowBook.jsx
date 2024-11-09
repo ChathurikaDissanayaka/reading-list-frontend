@@ -40,7 +40,7 @@ const ShowBook = () => {
                 <Image
                   h={"sm"}
                   src={book.coverImage}
-                  alt={book.title}
+                  alt={book.isbn}
                   rounded={"md"}
                 />
                 <Box ml={{ base: 0, md: 5 }}>

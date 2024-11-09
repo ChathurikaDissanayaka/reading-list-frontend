@@ -125,7 +125,7 @@ const CreateBooks = () => {
               </NativeSelectRoot>
             </Field>
             <Button width={"100%"} colorPalette="blue" onClick={handleSaveBook}>
-              Save Details
+              Add Book
             </Button>
           </Fieldset.Content>
         </Fieldset.Root>

@@ -2,8 +2,8 @@
 import { Link } from "react-router-dom";
 import { AiOutlineEdit } from "react-icons/ai";
 import { MdOutlineDelete } from "react-icons/md";
-import { HStack, Table, Badge } from "@chakra-ui/react";
 import { IoInformationCircleOutline } from "react-icons/io5";
+import { HStack, Table, Badge } from "@chakra-ui/react";
 
 const BookTable = ({ books }) => {
   return (

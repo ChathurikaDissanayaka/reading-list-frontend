@@ -6,6 +6,7 @@ import { Grid, Container, Text } from "@chakra-ui/react";
 const BookCard = ({ books, bookCount }) => {
   let readingCount = 0;
   let completedCount = 0;
+  const message = "Go to operations tab to add books."
   books.forEach((book) => {
     if (book.status == "Reading") {
       readingCount++;
@@ -15,7 +16,7 @@ const BookCard = ({ books, bookCount }) => {
   });
   return (
     <Container maxW={{ md: "3xl", lg: "5xl" }}>
-      {bookCount == 0 ? <NoBooksFound /> : ""}
+      {bookCount == 0 ? <NoBooksFound message={message} /> : ""}
       {readingCount == 0 ? (
         ""
       ) : (

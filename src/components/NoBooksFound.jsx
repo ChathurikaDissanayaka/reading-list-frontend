@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import { Flex, Text } from "@chakra-ui/react";
 
-const NoBooksFound = () => {
+const NoBooksFound = ({message}) => {
   return (
     <Flex flexDir={"column"} alignItems={"Center"}>
       <Text
@@ -8,10 +9,9 @@ const NoBooksFound = () => {
           base: "25px",
           sm: "32px",
         }}
-        fontWeight={"bold"}
         mb={3}
       >
-        No books found
+        No books found. {message}
       </Text>
     </Flex>
   );

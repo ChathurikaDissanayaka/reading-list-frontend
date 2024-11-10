@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Box, Flex, Badge, Card, HStack, Image } from "@chakra-ui/react";
+import { Box, Flex, Badge, Card, HStack, Image, Text } from "@chakra-ui/react";
 import Navbar from "../components/Navbar";
 import LoadingSpinner from "../components/LoadingSpinner";
 
@@ -38,7 +38,7 @@ const ShowBook = () => {
                 alignItems={"center"}
               >
                 <Image
-                  h={"sm"}
+                  h={"170px"}
                   src={book.coverImage}
                   alt={book.isbn}
                   rounded={"md"}
@@ -56,22 +56,31 @@ const ShowBook = () => {
                     Updated Time:
                     {new Date(book.updatedAt).toLocaleString()}
                   </Card.Description>
-                  <HStack mt="3">
-                    {book.status === "Completed" ? (
-                      <Badge colorPalette={"green"} variant="subtle">
-                        {book.status}
-                      </Badge>
-                    ) : (
-                      <Badge colorPalette={"yellow"} variant="subtle">
-                        {book.status}
-                      </Badge>
-                    )}
-                    <Badge colorPalette={"purple"} variant="subtle">
-                      {book.pageCount} pages
-                    </Badge>
-                  </HStack>
                 </Box>
               </Flex>
+              <HStack mt="2">
+                {book.status === "Completed" ? (
+                  <Badge colorPalette={"green"} variant="subtle">
+                    {book.status}
+                  </Badge>
+                ) : (
+                  <Badge colorPalette={"yellow"} variant="subtle">
+                    {book.status}
+                  </Badge>
+                )}
+                <Badge colorPalette={"purple"} variant="subtle">
+                  {book.pageCount} pages
+                </Badge>
+              </HStack>
+              <Text
+                w={{ base: "250px", md: "400px", lg: "95%" }}
+                fontSize={{
+                  base: "12px",
+                  sm: "16px",
+                }}
+              >
+                {book.description}
+              </Text>
             </Card.Body>
           </Card.Root>
         </Flex>

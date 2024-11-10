@@ -27,7 +27,7 @@ const BookCard = ({ books, bookCount }) => {
           fontWeight={"bold"}
           mb={3}
         >
-          Reading
+          Reading({readingCount}) 
         </Text>
       )}
 
@@ -61,7 +61,7 @@ const BookCard = ({ books, bookCount }) => {
           mb={3}
           mt={8}
         >
-          Completed
+          Completed({completedCount})
         </Text>
       )}
       <Grid

@@ -34,26 +34,26 @@ const Home = () => {
   }, [backendUrl]);
 
   return (
-    <Box p={"4"}>
+    <Box p="4">
       <Flex
-        h={16}
-        alignItems={"center"}
-        justifyContent={"space-between"}
-        flexDir={"row"}
+        h="16"
+        alignItems="center"
+        justifyContent="space-between"
+        flexDir="row"
       >
         <Text
-          bgColor={"blue.600"}
-          bgClip={"text"}
-          textAlign={"center"}
+          bgColor="blue.600"
+          bgClip="text"
+          textAlign="center"
           fontSize={{
             base: "16px",
             sm: "25px",
           }}
-          fontWeight={"bold"}
+          fontWeight="bold"
         >
           <Link to={"/"}>Reading List</Link>
         </Text>
-        <HStack spacing={2} alignItems={"center"}>
+        <HStack spacing="2" alignItems="center">
           <Link to="/books/operations">
             <Button size="sm" variant="outline">
               <HiOutlineWrench />

@@ -6,10 +6,10 @@ import Navbar from "../components/Navbar";
 import LoadingSpinner from "../components/LoadingSpinner";
 
 const ShowBook = () => {
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const [book, setBook] = useState({});
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   useEffect(() => {
     setLoading(true);
@@ -25,23 +25,20 @@ const ShowBook = () => {
   }, [backendUrl, id]);
 
   return (
-    <Box p={"4"}>
+    <Box p="4">
       <Navbar />
       {loading ? (
         <LoadingSpinner />
       ) : (
-        <Flex flexDir={"column"} alignItems={"center"}>
+        <Flex flexDir="column" alignItems="center">
           <Card.Root maxW="xl" overflow="hidden">
             <Card.Body gap="2">
-              <Flex
-                flexDir={{ base: "column", md: "row" }}
-                alignItems={"center"}
-              >
+              <Flex flexDir={{ base: "column", md: "row" }} alignItems="center">
                 <Image
-                  h={"170px"}
+                  h="170px"
                   src={book.coverImage}
                   alt={book.isbn}
-                  rounded={"md"}
+                  rounded="md"
                 />
                 <Box ml={{ base: 0, md: 5 }}>
                   <Card.Title>{book.title}</Card.Title>
@@ -60,15 +57,15 @@ const ShowBook = () => {
               </Flex>
               <HStack mt="2">
                 {book.status === "Completed" ? (
-                  <Badge colorPalette={"green"} variant="subtle">
+                  <Badge colorPalette="green" variant="subtle">
                     {book.status}
                   </Badge>
                 ) : (
-                  <Badge colorPalette={"yellow"} variant="subtle">
+                  <Badge colorPalette="yellow" variant="subtle">
                     {book.status}
                   </Badge>
                 )}
-                <Badge colorPalette={"purple"} variant="subtle">
+                <Badge colorPalette="purple" variant="subtle">
                   {book.pageCount} pages
                 </Badge>
               </HStack>

@@ -4,10 +4,10 @@ import { ColorModeButton } from "../components/ui/color-mode";
 const Navbar = ({ destination = "/" }) => {
   return (
     <Flex
-      h={16}
-      alignItems={"center"}
-      justifyContent={"space-between"}
-      flexDir={"row"}
+      h="16"
+      alignItems="center"
+      justifyContent="space-between"
+      flexDir="row"
     >
       <BackButton destination={destination} />
       <ColorModeButton variant="outline" />

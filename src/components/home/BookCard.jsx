@@ -15,8 +15,8 @@ const BookCard = ({ books, bookCount, readingCount, completedCount }) => {
             base: "16px",
             sm: "25px",
           }}
-          fontWeight={"bold"}
-          mb={3}
+          fontWeight="bold"
+          mb="3"
         >
           Reading({readingCount})
         </Text>
@@ -29,8 +29,8 @@ const BookCard = ({ books, bookCount, readingCount, completedCount }) => {
           base: "repeat(1, minmax(0, 1fr))",
         }}
         columns={{ base: 1, md: 2, lg: 3 }}
-        gap={5}
-        maxW={"6xl"}
+        gap="5"
+        maxW="6xl"
       >
         {books.map((book) =>
           book.status === "Reading" ? (
@@ -48,9 +48,9 @@ const BookCard = ({ books, bookCount, readingCount, completedCount }) => {
             base: "16px",
             sm: "25px",
           }}
-          fontWeight={"bold"}
-          mb={3}
-          mt={8}
+          fontWeight="bold"
+          mb="3"
+          mt="8"
         >
           Completed({completedCount})
         </Text>
@@ -62,8 +62,8 @@ const BookCard = ({ books, bookCount, readingCount, completedCount }) => {
           base: "repeat(1, minmax(0, 1fr))",
         }}
         columns={{ base: 1, md: 2, lg: 3 }}
-        gap={5}
-        maxW={"6xl"}
+        gap="5"
+        maxW="6xl"
       >
         {books.map((book) =>
           book.status === "Completed" ? (

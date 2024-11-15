@@ -35,27 +35,29 @@ const DeleteBook = () => {
   return (
     <Box p="4">
       <Navbar destination="/books/operations" />
-      {loading ? <LoadingSpinner /> : ""}
-
-      <Flex flexDir="column" alignItems="center">
-        <Box
-          maxW="xl"
-          p="16"
-          borderWidth="1px"
-          borderColor="border.disabled"
-          color="fg.disabled"
-          borderRadius="md"
-        >
-          <Flex flexDir="column" alignItems="center" justifyItems="center">
-            <Text fontSize="25px" marginBottom="5">
-              Do you really want to delete this book?
-            </Text>
-            <Button colorPalette="red" w="full" onClick={handleDeleteBook}>
-              Yes, delete it
-            </Button>
-          </Flex>
-        </Box>
-      </Flex>
+      {loading ? (
+        <LoadingSpinner />
+      ) : (
+        <Flex flexDir="column" alignItems="center">
+          <Box
+            maxW="xl"
+            p="16"
+            borderWidth="1px"
+            borderColor="border.disabled"
+            color="fg.disabled"
+            borderRadius="md"
+          >
+            <Flex flexDir="column" alignItems="center" justifyItems="center">
+              <Text fontSize="25px" marginBottom="5">
+                Do you really want to delete this book?
+              </Text>
+              <Button colorPalette="red" w="full" onClick={handleDeleteBook}>
+                Yes, delete it
+              </Button>
+            </Flex>
+          </Box>
+        </Flex>
+      )}
     </Box>
   );
 };

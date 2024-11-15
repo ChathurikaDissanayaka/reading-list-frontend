@@ -30,7 +30,7 @@ const Operations = () => {
   return (
     <Box p="4">
       <Navbar />
-      {loading ? <LoadingSpinner /> : ""}
+      {loading && <LoadingSpinner />}
       <Flex alignItems="center" flexDir="column">
         <Box w={{ base: "95%", md: "500px", lg: "800px" }}>
           <Text
@@ -44,7 +44,7 @@ const Operations = () => {
             Add, edit or update books
           </Text>
           <AddBook />
-          {bookCount == 0 ? <NoBooksFound /> : <BookTable books={books} />}
+          {bookCount === 0 ? <NoBooksFound /> : <BookTable books={books} />}
         </Box>
       </Flex>
     </Box>

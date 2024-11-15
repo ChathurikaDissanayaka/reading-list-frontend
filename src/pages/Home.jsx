@@ -7,8 +7,11 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import BookCard from "../components/home/BookCard";
 import { ColorModeButton } from "../components/ui/color-mode";
 import { Button } from "../components/ui/button";
+import NoBooksFound from "../components/NoBooksFound";
 
 const Home = () => {
+  const message = "Go to operations tab to add books.";
+
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const [books, setBooks] = useState([]);
   const [bookCount, setBookCount] = useState("");
@@ -63,13 +66,17 @@ const Home = () => {
         </HStack>
       </Flex>
 
-      {loading ? <LoadingSpinner /> : ""}
-      <BookCard
-        books={books}
-        bookCount={bookCount}
-        readingCount={readingCount}
-        completedCount={completedCount}
-      />
+      {loading ? (
+        <LoadingSpinner />
+      ) : bookCount === 0 ? (
+        <NoBooksFound message={message} />
+      ) : (
+        <BookCard
+          books={books}
+          readingCount={readingCount}
+          completedCount={completedCount}
+        />
+      )}
     </Box>
   );
 };

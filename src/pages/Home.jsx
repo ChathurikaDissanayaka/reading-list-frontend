@@ -9,12 +9,12 @@ import { ColorModeButton } from "../components/ui/color-mode";
 import { Button } from "../components/ui/button";
 
 const Home = () => {
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const [books, setBooks] = useState([]);
   const [bookCount, setBookCount] = useState("");
   const [readingCount, setReadingCount] = useState("");
   const [completedCount, setCompletedCount] = useState("");
   const [loading, setLoading] = useState(false);
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   useEffect(() => {
     setLoading(true);

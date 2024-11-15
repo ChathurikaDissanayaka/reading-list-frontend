@@ -8,10 +8,10 @@ import AddBook from "../components/AddBook";
 import NoBooksFound from "../components/NoBooksFound";
 
 const Operations = () => {
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const [books, setBooks] = useState([]);
   const [bookCount, setBookCount] = useState([]);
   const [loading, setLoading] = useState(false);
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   useEffect(() => {
     setLoading(true);
@@ -28,18 +28,18 @@ const Operations = () => {
       });
   }, [backendUrl]);
   return (
-    <Box p={"4"}>
+    <Box p="4">
       <Navbar />
       {loading ? <LoadingSpinner /> : ""}
-      <Flex alignItems={"center"} flexDir={"column"}>
+      <Flex alignItems="center" flexDir="column">
         <Box w={{ base: "95%", md: "500px", lg: "800px" }}>
           <Text
             fontSize={{
               base: "16px",
               sm: "25px",
             }}
-            fontWeight={"bold"}
-            mb={3}
+            fontWeight="bold"
+            mb="3"
           >
             Add, edit or update books
           </Text>

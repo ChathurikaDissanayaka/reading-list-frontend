@@ -5,26 +5,24 @@ import { HStack, Table } from "@chakra-ui/react";
 
 const BookTable = ({ books }) => {
   return (
-    <Table.Root maxW={"800px"} variant={"outline"} showColumnBorder="true">
+    <Table.Root maxW="800px" variant="outline" showColumnBorder="true">
       <Table.Header h={{ md: "32px", lg: "50px" }}>
         <Table.Row>
-          <Table.ColumnHeader textAlign={"center"} w={"30px"}>
+          <Table.ColumnHeader textAlign="center" w="30px">
             No
           </Table.ColumnHeader>
-          <Table.ColumnHeader textAlign={"center"}>Title</Table.ColumnHeader>
-          <Table.ColumnHeader textAlign={"center"}>
-            Operations
-          </Table.ColumnHeader>
+          <Table.ColumnHeader textAlign="center">Title</Table.ColumnHeader>
+          <Table.ColumnHeader textAlign="center">Operations</Table.ColumnHeader>
         </Table.Row>
       </Table.Header>
       <Table.Body>
         {books.map((book, index) => (
           <Table.Row key={book._id}>
-            <Table.Cell textAlign={"center"} w={"30px"}>
+            <Table.Cell textAlign="center" w="30px">
               {index + 1}
             </Table.Cell>
-            <Table.Cell textAlign={"center"}>{book.title}</Table.Cell>
-            <Table.Cell display={"flex"} justifyContent={"space-around"}>
+            <Table.Cell textAlign="center">{book.title}</Table.Cell>
+            <Table.Cell display="flex" justifyContent="space-around">
               <HStack>
                 <Link to={`/books/edit/${book._id}`}>
                   <AiOutlineEdit color="#CEB038" />

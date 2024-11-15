@@ -8,10 +8,10 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import { Button } from "../components/ui/button";
 
 const DeleteBook = () => {
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { id } = useParams();
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const { enqueueSnackbar } = useSnackbar();
 
   const handleDeleteBook = () => {
@@ -33,28 +33,24 @@ const DeleteBook = () => {
   };
 
   return (
-    <Box p={"4"}>
+    <Box p="4">
       <Navbar destination="/books/operations" />
       {loading ? <LoadingSpinner /> : ""}
 
-      <Flex flexDir={"column"} alignItems={"center"}>
+      <Flex flexDir="column" alignItems="center">
         <Box
-          maxW={"xl"}
-          p={16}
+          maxW="xl"
+          p="16"
           borderWidth="1px"
           borderColor="border.disabled"
           color="fg.disabled"
           borderRadius="md"
         >
-          <Flex
-            flexDir={"column"}
-            alignItems={"center"}
-            justifyItems={"center"}
-          >
-            <Text fontSize={"25px"} marginBottom={5}>
+          <Flex flexDir="column" alignItems="center" justifyItems="center">
+            <Text fontSize="25px" marginBottom="5">
               Do you really want to delete this book?
             </Text>
-            <Button colorPalette={"red"} w={"full"} onClick={handleDeleteBook}>
+            <Button colorPalette="red" w="full" onClick={handleDeleteBook}>
               Yes, delete it
             </Button>
           </Flex>

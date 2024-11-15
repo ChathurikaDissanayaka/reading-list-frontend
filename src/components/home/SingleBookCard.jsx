@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import { Badge, Box, Card, HStack, Image, Flex } from "@chakra-ui/react";
 import { GridItem } from "@chakra-ui/react";

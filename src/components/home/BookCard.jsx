@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import SingleBookCard from "./SingleBookCard";
 import NoBooksFound from "../NoBooksFound";
 import { Grid, Container, Text } from "@chakra-ui/react";

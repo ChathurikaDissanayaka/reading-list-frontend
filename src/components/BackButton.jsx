@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import { LuArrowLeftSquare } from "react-icons/lu";
 import { Button } from "../components/ui/button";

@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import BackButton from "./BackButton";
 import { Flex } from "@chakra-ui/react";
 import { ColorModeButton } from "../components/ui/color-mode";

@@ -54,7 +54,7 @@ const Home = () => {
           }}
           fontWeight="bold"
         >
-          <Link to={"/"}>Reading List</Link>
+          <Link to={"/"}>BookBuddy</Link>
         </Text>
         <HStack spacing="2" alignItems="center">
           <Link to="/books/operations">
